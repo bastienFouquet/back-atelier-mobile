@@ -21,6 +21,11 @@ module.exports.routes = {
 
   '/': { view: 'pages/homepage' },
 
+  'GET /recipes': {
+    action: 'all',
+    controller: 'RecipeController'
+  }
+
 
   /***************************************************************************
   *                                                                          *
