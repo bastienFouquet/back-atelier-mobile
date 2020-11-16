@@ -19,11 +19,24 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'pages/homepage' },
+  /**
+   * UserController
+   */
+  'post /user/auth': {
+    controller: 'UserController',
+    action: 'auth'
+  },
+  'post /user/create': {
+    controller: 'UserController',
+    action: 'create'
+  },
 
-  'GET /recipes': {
-    action: 'all',
-    controller: 'RecipeController'
+  /**
+   * RecipeController
+   */
+  'get /recipes': {
+    controller: 'RecipeController',
+    action: 'all'
   }
 
 

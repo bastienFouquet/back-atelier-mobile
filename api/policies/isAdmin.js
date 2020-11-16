@@ -1,0 +1,20 @@
+/**
+ * @policies
+ * Check if connected
+ */
+const jwt = require('jsonwebtoken');
+module.exports = async function (req, res, next) {
+  const token = req.header('Authorization');
+  if (token) {
+    const decoded = jwt.verify(token, sails.config.custom.secret);
+    if (decoded) {
+      if (decoded.role && decoded.role.label && decoded.role.label === 'Admin') {
+        return next();
+      }
+    }
+    return res.unauthorized();
+  }
+  // User is not allowed
+  // (default res.forbidden() behavior can be overridden in `config/403.js`)
+  return res.forbidden('You are not permitted to perform this action.');
+};

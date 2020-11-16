@@ -6,16 +6,12 @@
  */
 
 module.exports = {
-
-  tableName : 'user',
+  tableName: 'user',
   primaryKey: 'id',
-
-
-  attributes: { 
-
+  attributes: {
     id: {
       type: 'number',
-      autoIncrement : true
+      autoIncrement: true
     },
     firstname: {
       type: 'string',
@@ -27,9 +23,12 @@ module.exports = {
     },
     email: {
       type: 'string',
+      unique: true,
+      allowNull: false
     },
     password: {
-      type: 'string'
+      type: 'string',
+      allowNull: false
     },
     role: {
       columnName: 'role_id',
@@ -39,8 +38,13 @@ module.exports = {
       type: 'string',
       allowNull: true
     },
-
   },
 
+  beforeCreate: async function (recordToCreate, proceed) {
+    recordToCreate.password = await sails.helpers.hashPassword.with({
+      password: recordToCreate.password
+    }).catch(e => proceed(e));
+    proceed();
+  },
 };
 

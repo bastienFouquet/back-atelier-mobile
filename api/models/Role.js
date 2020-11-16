@@ -6,21 +6,16 @@
  */
 
 module.exports = {
-  
   tableName: 'role',
   primaryKey: 'id',
-  
   attributes: {
-
-      id: {
-        type: 'number',
-        autoIncrement: true
-      },
-      label: {
-        type: 'string'
-      }
-
+    id: {
+      type: 'number',
+      autoIncrement: true
+    },
+    label: {
+      type: 'string'
+    }
   },
-
 };
 

@@ -6,12 +6,9 @@
  */
 
 module.exports = {
-
   tableName: 'recipe',
   primaryKey: 'id',
-
   attributes: {
-
     id: {
       type: 'number',
       autoIncrement: true,
@@ -37,8 +34,6 @@ module.exports = {
       type: 'string',
       allowNull: true
     }
-
   },
-
 };
 
