@@ -37,6 +37,10 @@ module.exports.routes = {
   'get /recipes': {
     controller: 'RecipeController',
     action: 'all'
+  },
+  'get /recipe/:recipe': {
+    controller: 'RecipeController',
+    action: 'one'
   }
 
 

@@ -15,6 +15,11 @@ module.exports = {
     },
     title: {
       type: 'string'
+    },
+    recipes: {
+      collection: 'recipe',
+      via: 'ingredient',
+      through: 'ingredientrecipe'
     }
   },
 };

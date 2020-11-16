@@ -33,6 +33,11 @@ module.exports = {
     image: {
       type: 'string',
       allowNull: true
+    },
+    ingredients: {
+      collection: 'ingredient',
+      via: 'recipe',
+      through: 'ingredientrecipe'
     }
   },
 };
