@@ -41,8 +41,23 @@ module.exports.routes = {
   'get /recipe/:recipe': {
     controller: 'RecipeController',
     action: 'one'
-  }
+  },
 
+  /**
+   * NoteController
+   */
+  'get /note': {
+    controller: 'NoteController',
+    action: 'all'
+  },
+  'get /note/:note': {
+    controller: 'NoteController',
+    action: 'one'
+  },
+  'get /note/create': {
+    controller: 'NoteController',
+    action: 'create'
+  }
 
   /***************************************************************************
   *                                                                          *
