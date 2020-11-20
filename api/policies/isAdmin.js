@@ -9,6 +9,7 @@ module.exports = async function (req, res, next) {
     const decoded = jwt.verify(token, sails.config.custom.secret);
     if (decoded) {
       if (decoded.role && decoded.role.label && decoded.role.label === 'Admin') {
+        req.connection = decoded;
         return next();
       }
     }
