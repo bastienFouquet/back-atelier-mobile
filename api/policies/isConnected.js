@@ -8,7 +8,7 @@ module.exports = async function (req, res, next) {
   if (token) {
     const decoded = jwt.verify(token, sails.config.custom.secret);
     if (decoded) {
-      req.connection = decoded;
+      req.connection.user = decoded;
       return next();
     }
     return res.unauthorized();

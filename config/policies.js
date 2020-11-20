@@ -26,6 +26,7 @@ module.exports.policies = {
   },
 
   //RecipeController: {
-  //  'all': ['isAdmin']
+  //  'all': ['isAdmin'],
+  //  'create: ['isAdmin']
   //}
 };
