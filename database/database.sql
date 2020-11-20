@@ -62,7 +62,8 @@ CREATE TABLE IF NOT EXISTS `ingredient` (
 
 INSERT INTO `ingredient` (`id`, `title`) VALUES
 (1, 'Pommes de Terres'),
-(2, 'Fromage');
+(2, 'Fromage'),
+(3, 'Chou');
 
 -- --------------------------------------------------------
 

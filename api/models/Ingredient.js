@@ -14,7 +14,8 @@ module.exports = {
       autoIncrement: true
     },
     title: {
-      type: 'string'
+      type: 'string',
+      unique: true
     },
     recipes: {
       collection: 'recipe',
