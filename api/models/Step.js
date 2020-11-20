@@ -1,27 +1,32 @@
 /**
- * Ingredient.js
+ * Step.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
 
 module.exports = {
-  tableName: 'ingredient',
+
+  tableName: 'step',
   primaryKey: 'id',
   attributes: {
+
     id: {
       type: 'number',
-      autoIncrement: true
+      autoIncrement: true,
     },
-    title: {
-      type: 'string',
-      unique: true
+    description: {
+      type: 'string'
     },
-    recipes: {
-      collection: 'recipe',
-      via: 'ingredient',
-      through: 'ingredientrecipe'
+    position: {
+      type: 'number'
+    },
+    recipe: {
+      columnName: 'recipe_id',
+      model: 'recipe'
     }
+
   },
+
 };
 

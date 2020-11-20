@@ -6,7 +6,9 @@ const jwt = require('jsonwebtoken');
 module.exports = async function (req, res, next) {
   const token = req.header('Authorization');
   if (token) {
-    if (jwt.verify(token, sails.config.custom.secret)) {
+    const decoded = jwt.verify(token, sails.config.custom.secret);
+    if (decoded) {
+      req.connection.user = decoded;
       return next();
     }
     return res.unauthorized();
