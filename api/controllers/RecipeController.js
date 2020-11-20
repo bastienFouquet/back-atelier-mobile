@@ -23,6 +23,8 @@ module.exports = {
   one: async (req, res) => {
     try {
       const recipe = await Recipe.findOne({id: req.params.recipe}).populateAll();
+      const steps = await Step.find({recipe: req.params.recipe});
+      recipe.steps = steps;
       delete recipe.user.password;
       if (recipe) {
         return res.json(recipe);
