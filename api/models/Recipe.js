@@ -38,6 +38,9 @@ module.exports = {
       collection: 'ingredient',
       via: 'recipe',
       through: 'ingredientrecipe'
+    },
+    duration:{
+      type: 'string'
     }
   },
 };
