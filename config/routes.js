@@ -26,9 +26,9 @@ module.exports.routes = {
     controller: 'UserController',
     action: 'auth'
   },
-  'post /user/create': {
+  'post /user/register': {
     controller: 'UserController',
-    action: 'create'
+    action: 'register'
   },
 
   /**

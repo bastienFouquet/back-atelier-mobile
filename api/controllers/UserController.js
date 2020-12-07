@@ -20,21 +20,17 @@ module.exports = {
       return res.serverError(e);
     }
   },
-  create: async (req, res) => {
+  register: async (req, res) => {
     try {
-      if (req.body.email && req.body.password) {
-        const user = await User.create({
-          firstname: req.body.firstname,
-          lastname: req.body.lastname,
-          email: req.body.email,
-          password: req.body.password,
-          role: 2,
-          image: req.body.image
-        }).fetch();
-        if (user) {
-          delete user.password;
-          return res.json(user);
-        }
+      const user = await sails.helpers.registerUser.with({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        password: req.body.password,
+        confirmationPassword: req.body.confirmationPassword
+      });
+      if (user) {
+        return res.json(user);
       } else {
         return res.badRequest('Fields required');
       }

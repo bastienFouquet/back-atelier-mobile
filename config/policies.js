@@ -22,7 +22,7 @@ module.exports.policies = {
   '*': ['isConnected'],
   UserController: {
     'auth': [],
-    'create': []
+    'register': []
   },
 
   RecipeController: {
