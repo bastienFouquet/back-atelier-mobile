@@ -47,6 +47,15 @@ module.exports.routes = {
     action: 'create'
   },
 
+  'get /my/recipes': {
+    controller: 'RecipeController',
+    action: 'allByUser'
+  },
+  'delete /recipe/destroy/:id': {
+    controller: 'RecipeController',
+    action: 'destroy'
+  },
+
   /**
    * NoteController
    */
