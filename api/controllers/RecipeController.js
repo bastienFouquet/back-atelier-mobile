@@ -11,6 +11,9 @@ module.exports = {
       const recipes = await Recipe.find().populate('user').populate('category');
       for (const recipe of recipes) {
         delete recipe.user.password;
+        delete recipe.user.email;
+        delete recipe.user.role;
+        delete recipe.user.id;
       }
       if (recipes) {
         return res.json(recipes);
@@ -24,6 +27,9 @@ module.exports = {
     try {
       const recipe = await Recipe.findOne({id: req.params.recipe}).populateAll();
       delete recipe.user.password;
+      delete recipe.user.email;
+      delete recipe.user.role;
+      delete recipe.user.id;
       if (recipe) {
         return res.json(recipe);
       }
@@ -34,38 +40,18 @@ module.exports = {
   },
   create: async (req, res) => {
     try {
-      if (req.body.title && req.body.level && req.body.servings && req.body.category &&
-        req.body.ingredients && req.body.duration && req.body.steps) {
-        const recipe = await Recipe.create({
-          title: req.body.title,
-          level: req.body.level,
-          servings: req.body.servings,
-          category: req.body.category,
-          user: req.connection.user.id,
-          image: req.body.image,
-          duration: req.body.duration
-        }).fetch();
-        for (const item of req.body.ingredients) {
-          const ingredient = await Ingredient.findOrCreate({title: item.title}, {title: item.title});
-          await IngredientRecipe.create({
-            ingredient: ingredient.id,
-            recipe: recipe.id,
-            quantity: item.quantity
-          });
-        }
-        for (const item of req.body.steps) {
-          await Step.create({
-            description: item.description,
-            position: item.position,
-            recipe: recipe.id
-          });
-        }
-        if (recipe) {
-          return res.json(recipe);
-        }
-      } else {
-        return res.badRequest('Fields required');
-      }
+      const recipe = await sails.helpers.createRecipe.with({
+        title: req.body.title,
+        level: req.body.level,
+        categoryId: req.body.categoryId,
+        servings: req.body.servings,
+        duration: req.body.duration,
+        ingredients: req.body.ingredients,
+        steps: req.body.steps,
+        userId: req.connection.user.id,
+        image: req.body.image
+      });
+      return res.json(recipe);
     } catch (e) {
       console.error(e);
       return res.serverError(e);

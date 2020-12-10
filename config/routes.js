@@ -42,7 +42,7 @@ module.exports.routes = {
     controller: 'RecipeController',
     action: 'one'
   },
-  'post /recipes/create':{
+  'post /recipe/create':{
     controller: 'RecipeController',
     action: 'create'
   },
@@ -60,6 +60,26 @@ module.exports.routes = {
   },
   'get /note/create': {
     controller: 'NoteController',
+    action: 'create'
+  },
+
+  /**
+   * CategoryController
+   */
+  'get /categories': {
+    controller: 'CategoryController',
+    action: 'all'
+  },
+
+  /**
+   * IngredientController
+   */
+  'get /ingredients': {
+    controller: 'IngredientController',
+    action: 'all'
+  },
+  'post /ingredient/create': {
+    controller: 'IngredientController',
     action: 'create'
   }
 
