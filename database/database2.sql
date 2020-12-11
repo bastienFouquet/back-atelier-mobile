@@ -207,6 +207,30 @@ INSERT INTO `user` (`id`, `lastname`, `firstname`, `email`, `password`, `role_id
 (2, NULL, 'admin', 'admin@cookit.com', '$2a$10$W9oWyp0NPIB22iL.kBIxcOmggycoy6sR7B2kPT2zfzVmyYdS4jNiq', 1, NULL),
 (3, 'FOUQUET', 'Bastien', 'bastien@cookit.com', '$2a$10$Jb8KYlFwpcVVMKKgJ5FMWOkAb6OLUZMUQVE780ElKRmbI5EeB.vRy', 2, NULL);
 
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `note`
+--
+
+DROP TABLE IF EXISTS `note`;
+CREATE TABLE IF NOT EXISTS `note` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `valeur` int(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `note`
+--
+
+INSERT INTO `note` (`id`, `valeur`, `user_id`) VALUES
+(1, '5', '2'),
+(2, '1', '3');
+
+
 --
 -- Index pour les tables déchargées
 --
@@ -254,6 +278,12 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `note`
+--
+ALTER TABLE `note`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -294,11 +324,18 @@ ALTER TABLE `step`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
+-- AUTO_INCREMENT pour la table `note`
+--
+ALTER TABLE `note`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
