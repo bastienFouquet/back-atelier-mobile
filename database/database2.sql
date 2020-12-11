@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE IF NOT EXISTS `category` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -55,7 +55,7 @@ INSERT INTO `category` (`id`, `name`, `image`) VALUES
 
 DROP TABLE IF EXISTS `ingredient`;
 CREATE TABLE IF NOT EXISTS `ingredient` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -87,7 +87,7 @@ INSERT INTO `ingredient` (`id`, `title`) VALUES
 
 DROP TABLE IF EXISTS `ingredient_recipe`;
 CREATE TABLE IF NOT EXISTS `ingredient_recipe` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `ingredient_id` int(11) NOT NULL,
   `recipe_id` int(11) NOT NULL,
   `quantity` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -143,7 +143,7 @@ INSERT INTO `note` (`id`, `valeur`, `user_id`) VALUES
 
 DROP TABLE IF EXISTS `recipe`;
 CREATE TABLE IF NOT EXISTS `recipe` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `level` int(11) NOT NULL,
   `duration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -170,7 +170,7 @@ INSERT INTO `recipe` (`id`, `title`, `level`, `duration`, `category_id`, `servin
 
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE IF NOT EXISTS `role` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `label` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -191,7 +191,7 @@ INSERT INTO `role` (`id`, `label`) VALUES
 
 DROP TABLE IF EXISTS `step`;
 CREATE TABLE IF NOT EXISTS `step` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `position` int(11) NOT NULL,
   `recipe_id` int(11) NOT NULL,
@@ -226,7 +226,7 @@ INSERT INTO `step` (`id`, `description`, `position`, `recipe_id`) VALUES
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `lastname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `firstname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
