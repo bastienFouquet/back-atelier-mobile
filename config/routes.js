@@ -67,7 +67,7 @@ module.exports.routes = {
     controller: 'NoteController',
     action: 'one'
   },
-  'get /note/create': {
+  'post /note/create': {
     controller: 'NoteController',
     action: 'create'
   },

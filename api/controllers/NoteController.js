@@ -32,23 +32,21 @@ module.exports = {
       console.error(e);
       return res.serverError(e);
     }
-  }/*,
-    create: async (req, res) => {
-    try {
-        if (req.body.valeur) {
+  },
+  create: async (req, res) => {
+  try {
+      if (req.body.valeur) {
         const note = await Note.create({
-            valeur: req.body.valeur,
-            user: req.connection.user.id
-        }).fetch();
-        if (note) {
-            return res.json(note);
-        }
-        } else {
-        return res.badRequest('Fields required');
-        }
-    } catch (e) {
-        console.error(e);
-        return res.serverError(e);
+          valeur: req.body.valeur,
+          user: req.connection.user_id
+      }).fetch();
+      return res.json(note);
+    } else {
+      return res.badRequest('Fields required');
     }
-    }*/
+  } catch (e) {
+      console.error(e);
+      return res.serverError(e);
+    }
+  }
 };
