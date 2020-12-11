@@ -6,11 +6,9 @@
  */
 
 module.exports = {
-
   tableName: 'step',
   primaryKey: 'id',
   attributes: {
-
     id: {
       type: 'number',
       autoIncrement: true,
@@ -25,8 +23,6 @@ module.exports = {
       columnName: 'recipe_id',
       model: 'recipe'
     }
-
   },
-
 };
 

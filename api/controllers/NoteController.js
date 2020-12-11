@@ -7,32 +7,32 @@
 
 
 module.exports = {
-    all: async (req, res) => {
-        try {
-            const notes = await Note.find().populate('user');
-            for (const note of notes) {
-                delete note.user;
-            }
-            if (notes) {
-                return res.json(notes);
-            }
-          } catch (e) {
-            console.error(e);
-            return res.serverError(e);
-          }
-      },  
-      one: async (req, res) => {
-        try {
-          const note = await Note.findOne({id: req.params.note}).populateAll();
-          delete note.user.password;
-          if (note) {
-            return res.json(note);
-          }
-        } catch (e) {
-          console.error(e);
-          return res.serverError(e);
+  all: async (req, res) => {
+    try {
+      const notes = await Note.find().populate('user');
+      if (notes) {
+        for (const note of notes) {
+          delete note.user;
         }
-      }/*,
+        return res.json(notes);
+      }
+    } catch (e) {
+      console.error(e);
+      return res.serverError(e);
+    }
+  },
+  one: async (req, res) => {
+    try {
+      const note = await Note.findOne({id: req.params.note}).populateAll();
+      delete note.user.password;
+      if (note) {
+        return res.json(note);
+      }
+    } catch (e) {
+      console.error(e);
+      return res.serverError(e);
+    }
+  }/*,
     create: async (req, res) => {
     try {
         if (req.body.valeur) {
@@ -51,5 +51,4 @@ module.exports = {
         return res.serverError(e);
     }
     }*/
-  };
-  
+};

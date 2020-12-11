@@ -39,6 +39,10 @@ module.exports = {
       via: 'recipe',
       through: 'ingredientrecipe'
     },
+    steps: {
+      collection: 'step',
+      via: 'recipe'
+    },
     duration:{
       type: 'string'
     }
