@@ -34,17 +34,17 @@ module.exports = {
     }
   },
   create: async (req, res) => {
-  try {
-      if (req.body.valeur) {
+    try {
+      if (req.body.value) {
         const note = await Note.create({
-          valeur: req.body.valeur,
-          user: req.connection.user_id
-      }).fetch();
-      return res.json(note);
-    } else {
-      return res.badRequest('Fields required');
-    }
-  } catch (e) {
+          value: req.body.value,
+          user: req.connection.user.id
+        }).fetch();
+        return res.json(note);
+      } else {
+        return res.badRequest('Fields required');
+      }
+    } catch (e) {
       console.error(e);
       return res.serverError(e);
     }

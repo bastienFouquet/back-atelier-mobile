@@ -6,20 +6,20 @@
  */
 
 module.exports = {
-    tableName: 'note',
-    primaryKey: 'id',
-    attributes: {
-      id: {
-        type: 'number',
-        autoIncrement: true
-      },
-      valeur: {
-        columnName: 'valeur',
-        type: 'number'
-      },
-      user: {
-        columnName: 'user_id',
-        model: 'user'
-      }
+  tableName: 'note',
+  primaryKey: 'id',
+  attributes: {
+    id: {
+      type: 'number',
+      autoIncrement: true
     },
-  };
+    value: {
+      columnName: 'valeur',
+      type: 'number'
+    },
+    user: {
+      columnName: 'user_id',
+      model: 'user'
+    }
+  },
+};
