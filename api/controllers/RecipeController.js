@@ -8,7 +8,15 @@
 module.exports = {
   all: async (req, res) => {
     try {
-      const recipes = await Recipe.find().populate('user').populate('category');
+      const recipes = await Recipe.find().populate('user').populate('category').populate('notes');
+      for (const recipe of recipes) {
+        let total = 0;
+        for (const note of recipe.notes) {
+          total += note.value;
+        }
+        recipe.average = total / recipe.notes.length;
+        delete recipe.notes;
+      }
       for (const recipe of recipes) {
         delete recipe.user.password;
         delete recipe.user.email;
@@ -84,7 +92,7 @@ module.exports = {
       await Step.destroy({recipe: req.params.id});
       const recipe = await Recipe.destroy({id: req.params.id}).fetch();
       return res.json(recipe);
-    } catch (e){
+    } catch (e) {
       console.error(e);
       return res.serverError(e);
     }

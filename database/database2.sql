@@ -123,17 +123,12 @@ DROP TABLE IF EXISTS `note`;
 CREATE TABLE IF NOT EXISTS `note` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `valeur` int(10) NOT NULL,
+  `recipe_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Déchargement des données de la table `note`
---
 
-INSERT INTO `note` (`id`, `valeur`, `user_id`) VALUES
-(1, 5, 2),
-(2, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -161,6 +156,15 @@ CREATE TABLE IF NOT EXISTS `recipe` (
 INSERT INTO `recipe` (`id`, `title`, `level`, `duration`, `category_id`, `servings`, `user_id`, `image`) VALUES
 (1, 'Tartiflette', 4, '45 min', 2, 6, 3, NULL),
 (2, 'Gateau au chocolat', 1, '40 min', 4, 6, 3, NULL);
+
+--
+-- Déchargement des données de la table `note`
+--
+
+INSERT INTO `note` (`id`, `valeur`, `recipe_id`, `user_id`) VALUES
+(1, 3, 1, 2),
+(2, 4, 2, 2),
+(3, 2, 1, 3);
 
 -- --------------------------------------------------------
 

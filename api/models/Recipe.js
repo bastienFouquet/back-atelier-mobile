@@ -43,7 +43,11 @@ module.exports = {
       collection: 'step',
       via: 'recipe'
     },
-    duration:{
+    notes: {
+      collection: 'note',
+      via: 'recipe'
+    },
+    duration: {
       type: 'string'
     }
   },

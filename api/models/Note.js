@@ -20,6 +20,10 @@ module.exports = {
     user: {
       columnName: 'user_id',
       model: 'user'
+    },
+    recipe: {
+      columnName: 'recipe_id',
+      model: 'recipe'
     }
   },
 };

@@ -35,10 +35,11 @@ module.exports = {
   },
   create: async (req, res) => {
     try {
-      if (req.body.value) {
+      if (req.body.value && req.body.recipe) {
         const note = await Note.create({
           value: req.body.value,
-          user: req.connection.user.id
+          user: req.connection.user.id,
+          recipe: req.body.recipe
         }).fetch();
         return res.json(note);
       } else {
