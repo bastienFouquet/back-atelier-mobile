@@ -154,17 +154,9 @@ CREATE TABLE IF NOT EXISTS `recipe` (
 --
 
 INSERT INTO `recipe` (`id`, `title`, `level`, `duration`, `category_id`, `servings`, `user_id`, `image`) VALUES
-(1, 'Tartiflette', 4, '45 min', 2, 6, 3, NULL),
-(2, 'Gateau au chocolat', 1, '40 min', 4, 6, 3, NULL);
+(1, 'Tartiflette', 4, '45 min', 2, 6, 2, NULL),
+(2, 'Gateau au chocolat', 1, '40 min', 4, 6, 2, NULL);
 
---
--- Déchargement des données de la table `note`
---
-
-INSERT INTO `note` (`id`, `valeur`, `recipe_id`, `user_id`) VALUES
-(1, 3, 1, 2),
-(2, 4, 2, 2),
-(3, 2, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -245,7 +237,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `lastname`, `firstname`, `email`, `password`, `role_id`, `image`) VALUES
-(2, NULL, 'admin', 'admin@cookit.com', '$2a$10$W9oWyp0NPIB22iL.kBIxcOmggycoy6sR7B2kPT2zfzVmyYdS4jNiq', 1, NULL),
+(2, NULL, 'Cookit', 'admin@cookit.com', '$2a$10$W9oWyp0NPIB22iL.kBIxcOmggycoy6sR7B2kPT2zfzVmyYdS4jNiq', 1, NULL),
 (3, 'FOUQUET', 'Bastien', 'bastien@cookit.com', '$2a$10$Jb8KYlFwpcVVMKKgJ5FMWOkAb6OLUZMUQVE780ElKRmbI5EeB.vRy', 2, NULL);
 COMMIT;
 

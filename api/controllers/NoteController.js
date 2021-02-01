@@ -49,5 +49,18 @@ module.exports = {
       console.error(e);
       return res.serverError(e);
     }
+  },
+  update: async (req, res) => {
+    try {
+      const note = await Note.updateOne({
+        id: req.params.id,
+      }).set({
+        value: req.body.value
+      });
+      return res.json(note);
+    } catch (e) {
+      console.error(e);
+      return res.serverError(e);
+    }
   }
 };

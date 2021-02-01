@@ -15,7 +15,6 @@ module.exports = {
           total += note.value;
         }
         recipe.average = total / recipe.notes.length;
-        delete recipe.notes;
       }
       for (const recipe of recipes) {
         delete recipe.user.password;
@@ -74,11 +73,19 @@ module.exports = {
   },
   allByUser: async (req, res) => {
     try {
-      const recipes = await Recipe.find({user: req.connection.user.id}).populate('user');
+      const recipes = await Recipe.find({user: req.connection.user.id}).populate('user').populate('category').populate('notes');
+      for (const recipe of recipes) {
+        let total = 0;
+        for (const note of recipe.notes) {
+          total += note.value;
+        }
+        recipe.average = total / recipe.notes.length;
+      }
       for (const recipe of recipes) {
         delete recipe.user.password;
         delete recipe.user.email;
         delete recipe.user.role;
+        delete recipe.user.id;
       }
       return res.json(recipes);
     } catch (e) {
@@ -86,7 +93,7 @@ module.exports = {
       return res.serverError(e);
     }
   },
-  destroy: async (req, res) => {
+  delete: async (req, res) => {
     try {
       await IngredientRecipe.destroy({recipe: req.params.id});
       await Step.destroy({recipe: req.params.id});

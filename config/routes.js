@@ -51,25 +51,21 @@ module.exports.routes = {
     controller: 'RecipeController',
     action: 'allByUser'
   },
-  'delete /recipes/destroy/:id': {
+  'delete /recipes/delete/:id': {
     controller: 'RecipeController',
-    action: 'destroy'
+    action: 'delete'
   },
 
   /**
    * NoteController
    */
-  'get /note': {
-    controller: 'NoteController',
-    action: 'all'
-  },
-  'get /note/:note': {
-    controller: 'NoteController',
-    action: 'one'
-  },
-  'post /note/create': {
+  'post /notes/create': {
     controller: 'NoteController',
     action: 'create'
+  },
+  'put /notes/update/:id': {
+    controller: 'NoteController',
+    action: 'update'
   },
 
   /**
